@@ -14,7 +14,7 @@ server.use(express.json());
 server.use('/', loginRouter);
 
 
-const PORT = 5099;
+const PORT = process.env.PORT || 5099;
 
 server.listen(PORT, () => console.log(`Server is listening to port ${PORT} and running`));
 
