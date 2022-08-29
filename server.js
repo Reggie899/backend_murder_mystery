@@ -1,17 +1,17 @@
 import express from 'express';
 import cors from 'cors';
-
+import loginRouter from './routes/login.js';
 
 const server = express();
 server.use(cors()); 
 server.use(express.json()); 
 
 
-const login = (req, res) => {
-    res.json("This is the login")
-}
 
-server.use('/login', login)
+
+
+
+server.use('/', loginRouter);
 
 
 const PORT = 5099;
