@@ -1,17 +1,27 @@
 import express from 'express';
 import cors from 'cors';
 import loginRouter from './routes/login.js';
+import { connectDB } from './helpers/dbConnect.js';
+import mongoose from 'mongoose';
+
+
 
 const server = express();
 server.use(cors()); 
 server.use(express.json()); 
 
 
-
-
-
-
 server.use('/', loginRouter);
+
+
+connectDB();
+mongoose.connection.on("open", () => {
+        console.log("connected to db")
+});
+mongoose.connection.on("error", (error) => {
+console.log("Connection to MongoDB has failed ", error.message);
+    
+});
 
 
 const PORT = process.env.PORT || 5099;
