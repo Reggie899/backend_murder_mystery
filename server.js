@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import loginRouter from './routes/login.js';
+import emailview from './routes/emailview.js';
 import { connectDB } from './helpers/dbConnect.js';
 import mongoose from 'mongoose';
 
@@ -12,7 +13,7 @@ server.use(express.json());
 
 
 server.use('/', loginRouter);
-
+server.use('/read', emailview);
 
 connectDB();
 mongoose.connection.on("open", () => {
