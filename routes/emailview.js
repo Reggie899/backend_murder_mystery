@@ -1,6 +1,6 @@
 import { Router} from "express";
 import authenticateToken from '../middlewares/auth.js';
-import  {read}  from "../controllers/emailviewController.js";
+import  {read, unread}  from "../controllers/emailviewController.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -24,5 +24,7 @@ res.json("test")
 
 
 router.get('/read', authenticateToken, read); 
+router.get('/unread', authenticateToken, unread); 
+
 
 export default router;

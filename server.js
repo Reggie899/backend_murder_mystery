@@ -15,6 +15,7 @@ server.use(express.json());
 server.use('/', loginRouter);
 server.use('/read', emailview);
 
+
 connectDB();
 mongoose.connection.on("open", () => {
         console.log("connected to db")
